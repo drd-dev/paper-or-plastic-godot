@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/pixel-font_header.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/pixel-font_body.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/UI/LoadScreen/spr_logo_0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UI Scripts/credits_back_button.gd" type="Script" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.356941, 1 )
+colors = PoolColorArray( 0, 0.286275, 0.490196, 1, 0.0627451, 0.192157, 0.498039, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 120, 14, 20 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 50, 120, 14, 20 )
+
+[node name="Credits" type="Node2D"]
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( -4.33681e-19, 0 )
+rotation = 1.57079
+scale = Vector2( 0.238568, -253.604 )
+texture = SubResource( 2 )
+centered = false
+
+[node name="spr_logo_0" type="Sprite" parent="."]
+position = Vector2( 127, 87.4488 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+
+[node name="credits" type="Label" parent="."]
+margin_top = 226.838
+margin_right = 250.0
+margin_bottom = 259.838
+custom_fonts/font = ExtResource( 1 )
+text = "CREDITS"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body" type="Label" parent="credits"]
+margin_top = 45.5677
+margin_right = 250.0
+margin_bottom = 112.568
+custom_fonts/font = ExtResource( 2 )
+text = "Game By
+Dylan Dougherty
+
+With music from
+Tyler SHields"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body2" type="Label" parent="."]
+margin_top = 459.0
+margin_right = 250.0
+margin_bottom = 480.0
+custom_fonts/font = ExtResource( 2 )
+text = "Version: 1.0.0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+margin_left = 7.85724
+margin_top = 12.3471
+margin_right = 47.8572
+margin_bottom = 52.3471
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="backButton" to="backButton" method="_on_backButton_pressed"]

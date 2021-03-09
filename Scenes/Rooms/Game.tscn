@@ -1,0 +1,227 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Sprites/Backgrounds/GameBackground.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/UI/TopUI/ScorePanel.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/bag scripts/bag_controller.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Item_Spawner.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/UI/TopUI/pauseButton.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/TopUI/TopUI_Misses.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/TopUI/pauseButton_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/UI Scripts/Pause_Button.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/UI Scripts/Score_Counter.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Coin_Spawner.gd" type="Script" id=11]
+[ext_resource path="res://Fonts/pixel-font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Scripts/UI Scripts/Miss_UI.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/UI Scripts/ShakeCamera2D.gd" type="Script" id=14]
+[ext_resource path="res://Sprites/UI/game_over_UI/spr_deathBoard_0.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/UI Scripts/Retry_Button.gd" type="Script" id=17]
+[ext_resource path="res://Fonts/gameOverFont.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Scripts/UI Scripts/Quit_Button.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/UI Scripts/Game_Over_UI.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/UI Scripts/gameOverScore_UI.gd" type="Script" id=21]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 96, 38 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 96, 38 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 7 )
+region = Rect2( 192, 0, 96, 38 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 288, 0, 96, 38 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 60, 14, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 59, 14, 21 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 100, 14, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 99, 14, 21 )
+
+[node name="Game" type="Node2D"]
+
+[node name="ShakeCamera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 14 )
+
+[node name="BackgroundImage" type="Sprite" parent="."]
+position = Vector2( 118.835, 253.951 )
+z_index = -1000
+texture = ExtResource( 1 )
+
+[node name="Item_Spawner" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Coin_Spawner" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="Bag" parent="." instance=ExtResource( 2 )]
+position = Vector2( 126, 429.246 )
+motion/sync_to_physics = true
+script = ExtResource( 4 )
+
+[node name="Top_UI" type="ReferenceRect" parent="."]
+margin_right = 250.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Misses" type="AnimatedSprite" parent="Top_UI"]
+position = Vector2( 154, 0 )
+z_index = 1000
+frames = SubResource( 5 )
+centered = false
+script = ExtResource( 13 )
+
+[node name="Pause Button" type="TextureButton" parent="Top_UI"]
+margin_left = 96.0
+margin_right = 154.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScorePanel" type="TextureRect" parent="Top_UI"]
+margin_right = 48.0
+margin_bottom = 40.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Top_UI/ScorePanel"]
+margin_left = 3.40347
+margin_top = -3.78436
+margin_right = 43.4034
+margin_bottom = 24.2156
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.952941, 0.835294, 0.156863, 1 )
+text = "0"
+valign = 1
+clip_text = true
+uppercase = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game_Over_UI" type="CenterContainer" parent="."]
+pause_mode = 2
+anchor_right = 0.036
+margin_left = 58.0
+margin_top = 600.0
+margin_right = 194.0
+margin_bottom = 732.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="Game_Over_UI"]
+margin_right = 136.0
+margin_bottom = 132.0
+texture = ExtResource( 15 )
+
+[node name="scores" type="ReferenceRect" parent="Game_Over_UI"]
+margin_left = 68.0
+margin_top = 66.0
+margin_right = 68.0
+margin_bottom = 66.0
+script = ExtResource( 21 )
+
+[node name="score" type="Label" parent="Game_Over_UI/scores"]
+margin_left = -56.0981
+margin_top = -20.2142
+margin_right = -16.0981
+margin_bottom = -6.21425
+custom_fonts/font = ExtResource( 18 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highScore" type="Label" parent="Game_Over_UI/scores"]
+margin_left = 17.996
+margin_top = -20.2142
+margin_right = 57.996
+margin_bottom = -6.21425
+custom_fonts/font = ExtResource( 18 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="ReferenceRect" parent="Game_Over_UI"]
+margin_left = 68.0
+margin_top = 66.0
+margin_right = 68.0
+margin_bottom = 66.0
+
+[node name="retry_button" type="TextureButton" parent="Game_Over_UI/buttons"]
+margin_left = 17.996
+margin_top = 20.2272
+margin_right = 57.996
+margin_bottom = 60.2272
+texture_normal = SubResource( 6 )
+texture_pressed = SubResource( 7 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit_button2" type="TextureButton" parent="Game_Over_UI/buttons"]
+margin_left = -56.0981
+margin_top = 20.2272
+margin_right = -16.0981
+margin_bottom = 60.2272
+texture_normal = SubResource( 8 )
+texture_pressed = SubResource( 9 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Top_UI/Pause Button" to="Top_UI/Pause Button" method="_on_Pause_Button_pressed"]
+[connection signal="pressed" from="Game_Over_UI/buttons/retry_button" to="Game_Over_UI/buttons/retry_button" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Game_Over_UI/buttons/quit_button2" to="Game_Over_UI/buttons/quit_button2" method="_on_quit_button_pressed"]

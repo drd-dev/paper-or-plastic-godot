@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Game_Manager.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/LoadScreen/spr_logoBack_0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/LoadScreen/spr_logo_0.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UI Scripts/LoadScreen.gd" type="Script" id=5]
+
+[node name="Game Manager" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Load_screen" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="load_background" type="Sprite" parent="Load_screen"]
+position = Vector2( 120, -504 )
+scale = Vector2( 3.09724, 6.61832 )
+z_index = 2000
+texture = ExtResource( 3 )
+
+[node name="load_text" type="Sprite" parent="Load_screen"]
+position = Vector2( 128, -344 )
+z_index = 2001
+texture = ExtResource( 4 )

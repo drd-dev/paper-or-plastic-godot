@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/items/Items_Ketchup.png" type="Texture" id=1]
+[ext_resource path="res://item_phys_mat.tres" type="PhysicsMaterial" id=3]
+[ext_resource path="res://Scripts/item Scripts/item_control.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 50, 75 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 50, 0, 50, 75 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Ketchup" type="RigidBody2D" groups=[
+"collectables",
+]]
+physics_material_override = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.90735e-06, -14.1429 )
+frames = SubResource( 3 )
+speed_scale = 0.25
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -3.88177, -49.0929, 4.7774, -49.0891, 13.7673, -15.0026, 13.8609, 20.6758, 10.677, 23.6725, -9.83105, 23.6725, -13.1086, 20.7695, -12.9213, -14.909 )

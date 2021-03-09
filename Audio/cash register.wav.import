@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cash register.wav-bc09451356290d4984215c4b8dbe32fb.sample"
+
+[deps]
+
+source_file="res://Audio/cash register.wav"
+dest_files=[ "res://.import/cash register.wav-bc09451356290d4984215c4b8dbe32fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
