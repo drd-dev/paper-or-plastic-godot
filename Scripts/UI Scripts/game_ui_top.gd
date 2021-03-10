@@ -11,10 +11,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func _process(delta):
+	$Misses.frame = GameManager.misses;
+	var count = GameManager.score;
+	get_node("ScorePanel/Label").text = String(count);
+	
 
 func _on_Pause_Button_pressed():
 	AudioManager.Button_Press();

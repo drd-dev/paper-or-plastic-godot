@@ -9,7 +9,7 @@ var random = RandomNumberGenerator.new();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if(!GameManager.playing): return; #return if the game isn't currently playing
+	if(GameManager.game_state != GameManager.GAME_STATE.playing): return; #return if the game isn't currently playing
 	Update_Spawn_Time();
 	_spawnItem(coin);
 
@@ -26,7 +26,7 @@ func Update_Spawn_Time():
 
 #spawns an item at a random location in the game
 func _spawnItem(item):
-	if(!spawnReady || !GameManager.playing || GameManager.gameOver):
+	if(!spawnReady || GameManager.game_state != GameManager.GAME_STATE.playing):
 		return;
 		
 	spawnReady = false;

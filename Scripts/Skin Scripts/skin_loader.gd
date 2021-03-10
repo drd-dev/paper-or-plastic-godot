@@ -18,7 +18,7 @@ func _ready():
 
 
 func load_skin(skin_name):
-	var fileName: String = skin_dict[skin_name].fileName
+	var fileName: String = GameManager.skin_dict[skin_name].fileName
 	
 	var fullPath: String = ("res://SkinFrames/" + fileName);
 	var spriteFrames: SpriteFrames = load(fullPath);
@@ -31,45 +31,4 @@ func load_skin(skin_name):
 
 
 
-var skin_dict = {
-	"brown": { "fileName": "bag_brown.tres" },
-	"blue:": { "fileName": "bag_blue.tres" },
-	"green": { "fileName": "bag_green.tres" },
-	"pink": { "fileName": "bag_pink.tres" },
-	"red": { "fileName": "bag_red.tres" },
-	"knight": { "fileName": "bag_knight.tres" },
-	"viking": { "fileName": "bag_viking.tres" },
-	"roman": { "fileName": "bag_roman.tres" },
-	"scuba": { "fileName": "bag_scuba.tres" },
-	"cat": { "fileName": "bag_cat.tres" },
-	"dog": { "fileName": "bag_dog.tres" },
-	"suit": { "fileName": "bag_suit.tres" },
-	"doctor": { "fileName": "bag_doctor.tres" },
-	"pilot": { "fileName": "bag_pilot.tres" },
-	"army":{ "fileName": "bag_army.tres" },
-	"construct": {},
-	"zombie": {},
-	"skull": {},
-	"devil": {},
-	"angel": {},
-	"boy": {},
-	"alien": {},
-	"farmer": {},
-	"cow": {},
-	"fish": {},
-	"robot": {},
-	"gorilla": {},
-	"football": {},
-	"princess": {},
-	"king": {},
-	"scientist": {},
-	"blaike": {},
-	"astronaut": {},
-	"nathan": {},
-	"penguin": {},
-	"ginger": {},
-	"elf": {},
-	"snowman": {},
-	"deer": {},
-	"santa": {},
-}
+

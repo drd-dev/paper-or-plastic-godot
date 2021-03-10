@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Sprites/Backgrounds/GameBackground.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,17 +8,13 @@
 [ext_resource path="res://Sprites/UI/TopUI/pauseButton.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/TopUI/TopUI_Misses.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/UI/TopUI/pauseButton_pressed.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/UI Scripts/Pause_Button.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/UI Scripts/Score_Counter.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Coin_Spawner.gd" type="Script" id=11]
 [ext_resource path="res://Fonts/pixel-font.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Scripts/UI Scripts/Miss_UI.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/UI Scripts/ShakeCamera2D.gd" type="Script" id=14]
 [ext_resource path="res://Sprites/UI/game_over_UI/spr_deathBoard_0.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=16]
-[ext_resource path="res://Scripts/UI Scripts/Retry_Button.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/UI Scripts/game_ui_top.gd" type="Script" id=17]
 [ext_resource path="res://Fonts/gameOverFont.tres" type="DynamicFont" id=18]
-[ext_resource path="res://Scripts/UI Scripts/Quit_Button.gd" type="Script" id=19]
 [ext_resource path="res://Scripts/UI Scripts/Game_Over_UI.gd" type="Script" id=20]
 [ext_resource path="res://Scripts/UI Scripts/gameOverScore_UI.gd" type="Script" id=21]
 
@@ -62,6 +58,14 @@ region = Rect2( 0, 100, 14, 20 )
 atlas = ExtResource( 16 )
 region = Rect2( 50, 99, 14, 21 )
 
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 80, 14, 20 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 80, 14, 20 )
+
 [node name="Game" type="Node2D"]
 
 [node name="ShakeCamera2D" type="Camera2D" parent="."]
@@ -88,6 +92,7 @@ script = ExtResource( 4 )
 [node name="Top_UI" type="ReferenceRect" parent="."]
 margin_right = 250.0
 margin_bottom = 53.0
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -97,7 +102,6 @@ position = Vector2( 154, 0 )
 z_index = 1000
 frames = SubResource( 5 )
 centered = false
-script = ExtResource( 13 )
 
 [node name="Pause Button" type="TextureButton" parent="Top_UI"]
 margin_left = 96.0
@@ -107,7 +111,6 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 8 )
 expand = true
 stretch_mode = 4
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,7 +137,6 @@ text = "0"
 valign = 1
 clip_text = true
 uppercase = true
-script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -204,12 +206,11 @@ texture_normal = SubResource( 6 )
 texture_pressed = SubResource( 7 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="quit_button2" type="TextureButton" parent="Game_Over_UI/buttons"]
+[node name="quit_button" type="TextureButton" parent="Game_Over_UI/buttons"]
 margin_left = -56.0981
 margin_top = 20.2272
 margin_right = -16.0981
@@ -218,10 +219,23 @@ texture_normal = SubResource( 8 )
 texture_pressed = SubResource( 9 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Top_UI/Pause Button" to="Top_UI/Pause Button" method="_on_Pause_Button_pressed"]
-[connection signal="pressed" from="Game_Over_UI/buttons/retry_button" to="Game_Over_UI/buttons/retry_button" method="_on_retry_button_pressed"]
-[connection signal="pressed" from="Game_Over_UI/buttons/quit_button2" to="Game_Over_UI/buttons/quit_button2" method="_on_quit_button_pressed"]
+
+[node name="resume_button" type="TextureButton" parent="Game_Over_UI/buttons"]
+margin_left = -19.3684
+margin_top = 20.2272
+margin_right = 20.6316
+margin_bottom = 60.2272
+texture_normal = SubResource( 10 )
+texture_pressed = SubResource( 11 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Top_UI/Pause Button" to="Top_UI" method="_on_Pause_Button_pressed"]
+[connection signal="pressed" from="Game_Over_UI/buttons/retry_button" to="Game_Over_UI" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Game_Over_UI/buttons/quit_button" to="Game_Over_UI" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Game_Over_UI/buttons/resume_button" to="Game_Over_UI" method="_on_resume_button_pressed"]

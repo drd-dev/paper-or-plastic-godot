@@ -8,6 +8,8 @@ var startX = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("../SettingsPanel/music_button").visible = !AudioManager.music_muted;
+	get_node("../SettingsPanel/music_button_off").visible = AudioManager.music_muted;
 	pass # Replace with function body.
 
 
@@ -31,11 +33,13 @@ func _on_Settings_pressed():
 
 func _on_music_button_pressed():
 	AudioManager.Toggle_Music();
-
+	get_node("../SettingsPanel/music_button").visible = !AudioManager.music_muted;
+	get_node("../SettingsPanel/music_button_off").visible = AudioManager.music_muted;
 
 func _on_sfx_button_pressed():
 	AudioManager.Toggle_SFX();
-
+	get_node("../SettingsPanel/sfx_button").visible = !AudioManager.sfx_muted;
+	get_node("../SettingsPanel/sfx_button_off").visible = AudioManager.sfx_muted;
 
 func _on_credits_button_pressed():
 	AudioManager.Button_Press();

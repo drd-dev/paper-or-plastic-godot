@@ -6,7 +6,7 @@ extends Node
 
 
 #save system
-var path: String = "user://settings.cfg"
+var path: String = "user://save_data.cfg"
 var config = ConfigFile.new();
 var processing = false;
 
@@ -22,7 +22,7 @@ func _ready():
 func Save_Game():
 	if(processing): return;
 	processing = true;
-	print("saving game...")
+	if(GameManager.show_logs): print("saving game...")
 	#audio
 	config.set_value("audio", "music_muted", AudioManager.music_muted);
 	config.set_value("audio", "sfx_muted", AudioManager.sfx_muted);
@@ -30,6 +30,7 @@ func Save_Game():
 	#stats
 	config.set_value("stats", "high_score", GameManager.highScore);	
 	config.set_value("stats", "coins", GameManager.coins);
+
 	
 	
 	#collection stats
@@ -50,11 +51,12 @@ func Save_Game():
 	config.set_value("stats", "coins_col", GameManager.coins_col);
 	
 	#unlocks
-	
-	
+	config.set_value("unlocks", "current_skin", GameManager.current_skin);
+	config.set_value("unlocks", "skin_unlocks", GameManager.skin_unlocks);
+
 	
 	config.save(path); #save the file
-	print("save completed.")
+	if(GameManager.show_logs): print("save completed.")
 	processing = false
 	pass;
 
@@ -62,7 +64,7 @@ func Save_Game():
 func Load_Save():
 	if(processing): return;
 	processing = true;
-	print("loading save...")
+	if(GameManager.show_logs): print("loading save...")
 	var err = config.load(path);
 	if err == OK:
 		#load audio states
@@ -91,10 +93,18 @@ func Load_Save():
 		GameManager.soda_col = config.get_value("stats", "soda_col", 0);
 		GameManager.soup_col = config.get_value("stats", "soup_col", 0);
 		GameManager.coins_col = config.get_value("stats", "coins_col", 0);
+
 		
+		#unlocks
+		GameManager.current_skin = config.get_value("unlocks", "current_skin", "brown");
+		GameManager.skin_unlocks = config.get_value("unlocks", "skin_unlocks", {});
 		
-		print("load completed")
+		if(GameManager.show_logs):
+			print("Bag Unlock Data:")
+			print(GameManager.skin_unlocks)
+			print("load completed")
 		processing = false;
 	else:
-		print("no save currently exists, creating a new one now...")
+		if(GameManager.show_logs): print("no save currently exists, creating a new one now...")
+		processing = false;
 		Save_Game(); #setup a new save if one doesnt currently exist or we cant open ones
