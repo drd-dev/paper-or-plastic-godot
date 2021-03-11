@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/pixel-font_header.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Fonts/pixel-font_body.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Sprites/UI/LoadScreen/spr_logo_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/UI Scripts/credits_back_button.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/backButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.356941, 1 )
@@ -12,14 +11,6 @@ colors = PoolColorArray( 0, 0.286275, 0.490196, 1, 0.0627451, 0.192157, 0.498039
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 120, 14, 20 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 4 )
-region = Rect2( 50, 120, 14, 20 )
 
 [node name="Credits" type="Node2D"]
 
@@ -78,17 +69,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="backButton" type="TextureButton" parent="."]
-margin_left = 7.85724
-margin_top = 12.3471
-margin_right = 47.8572
-margin_bottom = 52.3471
-texture_normal = SubResource( 3 )
-texture_pressed = SubResource( 4 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="backButton" to="backButton" method="_on_backButton_pressed"]
+[node name="backButton" parent="." instance=ExtResource( 4 )]

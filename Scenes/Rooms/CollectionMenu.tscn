@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Backgrounds/ClawBack.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/backButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/UI Scripts/Collection Menu/collection_controller.gd" type="Script" id=3]
+
+[node name="Collection_Menu" type="Node2D"]
+script = ExtResource( 3 )
+xSpacing = 80.0
+ySpacing = 150.0
+
+[node name="background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="backButton" parent="." instance=ExtResource( 2 )]
+
+[node name="skins" type="Node2D" parent="."]

@@ -1,9 +1,6 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var room_name: String = "MainMenu"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,5 +15,5 @@ func _ready():
 
 func _on_backButton_pressed():
 	AudioManager.Button_Back();
-	GameManager.Change_Room("MainMenu");
+	GameManager.Change_Room(room_name);
 	pass # Replace with function body.

@@ -8,7 +8,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_skin("doctor");
+	load_skin(GameManager.current_skin);
 	pass # Replace with function body.
 
 

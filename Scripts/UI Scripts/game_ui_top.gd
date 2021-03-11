@@ -11,7 +11,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _process(delta):
+func _process(_delta):
 	$Misses.frame = GameManager.misses;
 	var count = GameManager.score;
 	get_node("ScorePanel/Label").text = String(count);

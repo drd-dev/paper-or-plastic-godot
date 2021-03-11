@@ -33,35 +33,35 @@ region = Rect2( 0, 180, 14, 20 )
 atlas = ExtResource( 2 )
 region = Rect2( 50, 180, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 220, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 220, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 200, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 200, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 240, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 240, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 50, 20 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 0, 50, 20 )
 
@@ -158,8 +158,8 @@ margin_top = 40.0
 margin_right = 14.0
 margin_bottom = 60.0
 rect_scale = Vector2( 1.5, 1.5 )
-texture_normal = SubResource( 11 )
-texture_pressed = SubResource( 12 )
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 8 )
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -170,8 +170,8 @@ margin_top = 80.9921
 margin_right = 14.0
 margin_bottom = 100.992
 rect_scale = Vector2( 1.5, 1.5 )
-texture_normal = SubResource( 7 )
-texture_pressed = SubResource( 8 )
+texture_normal = SubResource( 9 )
+texture_pressed = SubResource( 10 )
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -182,8 +182,8 @@ margin_top = 80.9921
 margin_right = 14.0
 margin_bottom = 100.992
 rect_scale = Vector2( 1.5, 1.5 )
-texture_normal = SubResource( 13 )
-texture_pressed = SubResource( 14 )
+texture_normal = SubResource( 11 )
+texture_pressed = SubResource( 12 )
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,8 +204,8 @@ margin_left = 29.0625
 margin_top = 206.25
 margin_right = 79.0625
 margin_bottom = 226.25
-texture_normal = SubResource( 9 )
-texture_pressed = SubResource( 10 )
+texture_normal = SubResource( 13 )
+texture_pressed = SubResource( 14 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 5 )
