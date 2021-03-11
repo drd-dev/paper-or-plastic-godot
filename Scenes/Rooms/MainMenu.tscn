@@ -1,13 +1,14 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Sprites/Backgrounds/MainBack.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/UI/Highscore.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/pixel-font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Scripts/UI Scripts/Main Menu/Play_Button.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/UI Scripts/Main Menu/main_menu_bottom_ui.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/UI Scripts/Main Menu/Settings_Panel.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/UI Scripts/Main Menu/high_score_UI.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/UI Scripts/Main Menu/car_spawner.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/coin_UI.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -64,6 +65,14 @@ region = Rect2( 0, 0, 50, 20 )
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 0, 50, 20 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 20, 30, 21 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 20, 30, 21 )
 
 [node name="MainMenu" type="Node2D"]
 
@@ -189,12 +198,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="coin_UI" parent="Top_UI" instance=ExtResource( 9 )]
+margin_left = -12.0
+margin_top = -15.1421
+margin_right = 28.0
+margin_bottom = 24.8579
+rect_scale = Vector2( 1.25, 1.25 )
+
 [node name="Bottom_UI" type="ReferenceRect" parent="."]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 20.0
 margin_bottom = 20.0
 rect_scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -208,7 +225,19 @@ texture_normal = SubResource( 13 )
 texture_pressed = SubResource( 14 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Collection Button" type="TextureButton" parent="Bottom_UI"]
+margin_left = -6.0
+margin_top = 206.25
+margin_right = 24.0
+margin_bottom = 226.25
+texture_normal = SubResource( 15 )
+texture_pressed = SubResource( 16 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -222,4 +251,5 @@ script = ExtResource( 8 )
 [connection signal="pressed" from="Top_UI/SettingsPanel/music_button_off" to="Top_UI/Settings" method="_on_music_button_pressed"]
 [connection signal="pressed" from="Top_UI/SettingsPanel/sfx_button" to="Top_UI/Settings" method="_on_sfx_button_pressed"]
 [connection signal="pressed" from="Top_UI/SettingsPanel/sfx_button_off" to="Top_UI/Settings" method="_on_sfx_button_pressed"]
-[connection signal="pressed" from="Bottom_UI/Play Button" to="Bottom_UI/Play Button" method="_on_Play_Button_pressed"]
+[connection signal="pressed" from="Bottom_UI/Play Button" to="Bottom_UI" method="_on_Play_Button_pressed"]
+[connection signal="pressed" from="Bottom_UI/Collection Button" to="Bottom_UI" method="_on_Collection_Button_pressed"]

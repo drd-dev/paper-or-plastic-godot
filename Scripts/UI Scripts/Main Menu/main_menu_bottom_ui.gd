@@ -16,3 +16,13 @@ func _ready():
 #	pass
 
 
+func _on_Play_Button_pressed():
+	AudioManager.Button_Press();
+	GameManager.Change_Room("Game")
+	pass # Replace with function body.
+
+
+func _on_Collection_Button_pressed():
+	AudioManager.Button_Press();
+	GameManager.Change_Room("CollectionMenu")
+	pass # Replace with function body.

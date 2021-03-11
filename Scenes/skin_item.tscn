@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/UI/UnlockButtons/Unlock_Buttons.png" type="Texture" id=1]
 [ext_resource path="res://SkinFrames/bag_brown.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Sprites/UI/TopUI/CoinScore.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/pixel-font_skin_price.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scripts/UI Scripts/Bag Collection/skin_item.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -9,9 +12,18 @@ region = Rect2( 0, 0, 68, 100 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 67, 0, 69, 100 )
+region = Rect2( 68, 0, 68, 100 )
 
-[node name="skin_item" type="Node2D"]
+[node name="skin_item" type="Control"]
+margin_right = 68.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 68, 140 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_right = 68.0
@@ -24,13 +36,31 @@ __meta__ = {
 }
 
 [node name="skin_back" type="AnimatedSprite" parent="TextureButton"]
-position = Vector2( 34.4611, 53.1899 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 34.4611, 56.6332 )
+scale = Vector2( 0.6, 0.6 )
 frames = ExtResource( 2 )
 animation = "back"
 
 [node name="skin_front" type="AnimatedSprite" parent="TextureButton"]
-position = Vector2( 34.4611, 53.1899 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 34.4611, 56.6332 )
+scale = Vector2( 0.6, 0.6 )
 frames = ExtResource( 2 )
 animation = "idle"
+
+[node name="price" type="Label" parent="TextureButton"]
+margin_left = 14.1997
+margin_top = 105.37
+margin_right = 54.1997
+margin_bottom = 122.37
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 4 )
+text = "100"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="TextureButton"]
+position = Vector2( 5, 110.37 )
+texture = ExtResource( 3 )
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

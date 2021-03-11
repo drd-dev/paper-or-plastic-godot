@@ -14,7 +14,7 @@ var misses = 0;
 var highScore = 0;
 var coins = 0;
 var current_skin = "brown";
-var skin_unlocks= {}; #dictionary to store unlocks
+var skin_unlocks = {}; #dictionary to store unlocks
 
 
 #collected items

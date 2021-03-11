@@ -10,6 +10,10 @@ var startX = 0;
 func _ready():
 	get_node("../SettingsPanel/music_button").visible = !AudioManager.music_muted;
 	get_node("../SettingsPanel/music_button_off").visible = AudioManager.music_muted;
+	
+	get_node("../SettingsPanel/sfx_button").visible = !AudioManager.sfx_muted;
+	get_node("../SettingsPanel/sfx_button_off").visible = AudioManager.sfx_muted;
+	
 	pass # Replace with function body.
 
 

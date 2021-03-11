@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/Backgrounds/GameBackground.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sprites/UI/TopUI/pauseButton.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/TopUI/TopUI_Misses.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/UI/TopUI/pauseButton_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/coin_UI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/Coin_Spawner.gd" type="Script" id=11]
 [ext_resource path="res://Fonts/pixel-font.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Scripts/UI Scripts/ShakeCamera2D.gd" type="Script" id=14]
@@ -140,6 +141,11 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="coin_UI" parent="Top_UI" instance=ExtResource( 9 )]
+margin_top = 38.0
+margin_bottom = 78.0
+rect_scale = Vector2( 1.2, 1.2 )
 
 [node name="Game_Over_UI" type="CenterContainer" parent="."]
 pause_mode = 2
