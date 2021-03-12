@@ -44,7 +44,7 @@ func _process(_delta):
 	if(GameManager.score > 30): index = random.randf_range(0,5)
 	if(GameManager.score > 35): index = random.randf_range(0,6)
 	if(GameManager.score > 45): index = random.randf_range(0,10)
-	if(GameManager.score > 45): index = random.randf_range(0,12)
+	if(GameManager.score > 45): index = random.randf_range(0,13)
 
 	_spawnItem(itemList[index]);
 

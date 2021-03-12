@@ -95,6 +95,8 @@ func Item_Caught(body):
 		cheese_col += 1;
 	elif(body.type == "chocolate"):
 		chocolate_col += 1;
+	elif(body.type == "chips"):
+		chips_col += 1;
 	elif(body.type == "donut"):
 		donut_col += 1;
 	elif(body.type == "ketchup"):
