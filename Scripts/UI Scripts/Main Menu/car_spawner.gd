@@ -41,7 +41,7 @@ func spawn_car():
 		carPos.x = -300;
 	else:
 		carPos.y = -20;
-		carPos.x = 400;
+		carPos.x = get_viewport_rect().size.x + 300;
 		spawnedCar.get_node("car_sprite").set_flip_h(true);
 		spawnedCar.speed = -spawnedCar.speed;
 		spawnedCar.z_index = 900;
@@ -50,6 +50,6 @@ func spawn_car():
 	
 	
 	yield(get_tree().create_timer(spawnFreq), "timeout");
-	spawnFreq = random.randf_range(2, 4);
+	spawnFreq = random.randf_range(6, 12);
 	flipDir = !flipDir;
 	spawnReady = true;

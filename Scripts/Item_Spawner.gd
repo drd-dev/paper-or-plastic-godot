@@ -18,13 +18,25 @@ const Item_13 = preload("res://Scenes/Items/soda.tscn");
 
 const itemList = [Item_1, Item_2, Item_3, Item_4, Item_5, Item_6, Item_7, Item_8, Item_9, Item_10, Item_11, Item_12, Item_13]; #list of all items
 
-var spawnTime = 0.5
-var spawnReady: bool = true; #for the timer function
+var spawnTime = 2;
+var initialDelay = 2;
+var spawnReady: bool = false; #for the timer function
+var spawnerStarted: bool = false;
 var random = RandomNumberGenerator.new();
+
+
+func start_spawner():
+	if(spawnerStarted): return;
+	spawnerStarted = true;
+	yield(get_tree().create_timer(initialDelay), "timeout");
+	spawnReady = true;
+	yield(get_tree().create_timer(initialDelay), "timeout");
+	get_node("../Coin_Spawner").spawnReady = true;
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if(GameManager.game_state != GameManager.GAME_STATE.playing): return; #return if the game isn't currently playing
+	if(GameManager.game_state != GameManager.GAME_STATE.playing || !spawnReady): return; #return if the game isn't currently playing
 	var index = 0;
 	
 	if(GameManager.score > 10): index = random.randf_range(0,2)
@@ -36,6 +48,8 @@ func _process(_delta):
 
 	_spawnItem(itemList[index]);
 
+	if(GameManager.game_state != GameManager.GAME_STATE.pre_game):
+		$tutorial.visible = false;
 
 
 func Update_Spawn_Time():
@@ -60,7 +74,7 @@ func _spawnItem(item):
 	#set its position
 	var itemPos = Vector2();
 	itemPos.y = position.y;
-	itemPos.x = random.randf_range(10, 240);
+	itemPos.x = random.randf_range(15, get_viewport_rect().size.x - 15);
 	spawnedItem.position = itemPos;
 	
 	#set its rotation

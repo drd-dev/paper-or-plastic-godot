@@ -15,7 +15,7 @@ var highScore = 0;
 var coins = 0;
 var current_skin = "brown";
 var skin_unlocks = {}; #dictionary to store unlocks
-
+var player: Node = null;
 
 #collected items
 var items_col: int = 0;
@@ -42,7 +42,7 @@ var loading = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_unlocks();
-	game_state = GAME_STATE.playing;
+
 	
 	if(show_logs):
 		print("PAPER OR PLASTIC RELOADED");
@@ -53,10 +53,8 @@ func _ready():
 func Reset_Game():
 	misses = 0;
 	score = 0;
-	game_state = GAME_STATE.playing;
+	game_state = GAME_STATE.pre_game;
 	get_tree().paused = false;
-
-
 
 
 	
@@ -65,7 +63,7 @@ func Reset_Game():
 func Item_Missed():
 	if(game_state != GAME_STATE.playing): return;
 	misses += 1;
-	
+	player.miss_animation();
 	#shake screen
 	get_node("/root/Game/ShakeCamera2D").add_trauma(0.5)
 	
@@ -76,12 +74,41 @@ func Item_Missed():
 		
 	AudioManager.Item_Missed();
 
-func Item_Caught():
+func Item_Caught(body):
 	if(game_state != GAME_STATE.playing): return;
 	
 	score += 1;
 	if(score > highScore):
 		highScore = score;
+		
+	#collection stats
+	print(body.type);
+	if(body.type == "orange"):
+		orange_col += 1;
+	elif(body.type == "apple"):
+		apple_col += 1;
+	elif(body.type == "bread"):
+		bread_col += 1;
+	elif(body.type == "carrot"):
+		carrot_col += 1;
+	elif(body.type == "cheese"):
+		cheese_col += 1;
+	elif(body.type == "chocolate"):
+		chocolate_col += 1;
+	elif(body.type == "donut"):
+		donut_col += 1;
+	elif(body.type == "ketchup"):
+		ketchup_col += 1;
+	elif(body.type == "milk"):
+		milk_col += 1;
+	elif(body.type == "peanutButter"):
+		peanutButter_col += 1;
+	elif(body.type == "soda"):
+		soda_col += 1;
+	elif(body.type == "soup"):
+		soup_col += 1;
+	else:
+		print("unidentified item caught " + body.type);
 
 func Coin_Caught():
 	coins += 1;
@@ -92,11 +119,7 @@ func Coin_Caught():
 #called when the player misses 3 items
 func Game_over(): 
 	if(game_state == GAME_STATE.gameOver): return;
-	
 	game_state = GAME_STATE.gameOver
-
-	#show game over UI
-	get_node("/root/Game/Game_Over_UI").showUI = true;
 	
 	#save the current game
 	SaveManager.Save_Game();
@@ -104,12 +127,10 @@ func Game_over():
 
 func Pause_Game():
 	game_state = GAME_STATE.paused
-	get_node("/root/Game/Game_Over_UI").showUI = true;
 	get_tree().paused = true;
 
 func Resume_Game():
 	game_state = GAME_STATE.playing
-	get_node("/root/Game/Game_Over_UI").showUI = false;
 	get_tree().paused = false;
 
 func Change_Room(roomName):
@@ -118,8 +139,9 @@ func Change_Room(roomName):
 	get_node("Load_screen").ShowLoadScreen(time);
 	loading = true;
 	yield(get_tree().create_timer(time), "timeout");
-	var r = get_tree().change_scene("res://Scenes/Rooms/" + roomName + ".tscn");
-	print(r);
+	
+	if get_tree().change_scene("res://Scenes/Rooms/" + roomName + ".tscn") != OK:
+		print("error loading new scene " + roomName)
 	GameManager.Reset_Game();
 
 

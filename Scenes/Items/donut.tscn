@@ -28,6 +28,7 @@ radius = 23.7551
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "donut"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.90735e-06, -14.1429 )

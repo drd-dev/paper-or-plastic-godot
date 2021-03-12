@@ -24,6 +24,7 @@ extents = Vector2( 16.7521, 16.8408 )
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "cheese"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5.96046e-08, -20.9028 )

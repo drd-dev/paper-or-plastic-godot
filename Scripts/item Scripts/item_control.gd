@@ -1,8 +1,7 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var type: String = "";
+
 var activationHeight = 150;
 
 
@@ -13,7 +12,7 @@ func _process(_delta):
 	
 	
 	
-	if(position.y > 600 || position.x > 300 || position.x < -100):
+	if(position.y > 600 || position.x > get_viewport_rect().size.x + 30 || position.x < - 30):
 		GameManager.Item_Missed();
 		queue_free(); #delete the item
 #	pass

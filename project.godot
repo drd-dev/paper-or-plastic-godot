@@ -18,7 +18,7 @@ _global_script_class_icons={
 config/name="Paper Or plastic: Rebagged"
 config/description="Remake of the original Paper or Plastic"
 run/main_scene="res://Scenes/Rooms/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/icon.png"
 
 [autoload]
 
@@ -30,6 +30,7 @@ SaveManager="*res://Scenes/SaveManager.tscn"
 
 window/size/width=250
 window/size/height=480
+window/size/resizable=false
 window/size/test_width=500
 window/size/test_height=960
 window/dpi/allow_hidpi=true

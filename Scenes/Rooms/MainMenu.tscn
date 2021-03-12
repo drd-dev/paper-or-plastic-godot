@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Sprites/Backgrounds/MainBack.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=2]
@@ -73,6 +73,14 @@ region = Rect2( 0, 20, 30, 21 )
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
 region = Rect2( 50, 20, 30, 21 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 140, 30, 20 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 140, 30, 20 )
 
 [node name="MainMenu" type="Node2D"]
 
@@ -230,12 +238,25 @@ __meta__ = {
 }
 
 [node name="Collection Button" type="TextureButton" parent="Bottom_UI"]
-margin_left = -6.0
+margin_left = -4.125
 margin_top = 206.25
-margin_right = 24.0
+margin_right = 25.875
 margin_bottom = 226.25
 texture_normal = SubResource( 15 )
 texture_pressed = SubResource( 16 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats Button" type="TextureButton" parent="Bottom_UI"]
+margin_left = 82.0
+margin_top = 206.25
+margin_right = 112.0
+margin_bottom = 226.25
+texture_normal = SubResource( 17 )
+texture_pressed = SubResource( 18 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -253,3 +274,4 @@ script = ExtResource( 8 )
 [connection signal="pressed" from="Top_UI/SettingsPanel/sfx_button_off" to="Top_UI/Settings" method="_on_sfx_button_pressed"]
 [connection signal="pressed" from="Bottom_UI/Play Button" to="Bottom_UI" method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="Bottom_UI/Collection Button" to="Bottom_UI" method="_on_Collection_Button_pressed"]
+[connection signal="pressed" from="Bottom_UI/Stats Button" to="Bottom_UI" method="_on_Stats_Button_pressed"]

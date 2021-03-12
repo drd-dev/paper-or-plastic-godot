@@ -25,6 +25,7 @@ animations = [ {
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "milk"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.374998, -3.8929 )

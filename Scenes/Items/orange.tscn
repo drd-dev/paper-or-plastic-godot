@@ -12,7 +12,7 @@ region = Rect2( 0, 0, 50, 75 )
 atlas = ExtResource( 1 )
 region = Rect2( 50, 0, 50, 75 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": false,
@@ -28,10 +28,11 @@ radius = 15.8007
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "orange"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.420929, -22.5894 )
-frames = SubResource( 5 )
+frames = SubResource( 3 )
 speed_scale = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

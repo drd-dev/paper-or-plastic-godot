@@ -28,6 +28,7 @@ extents = Vector2( 14.894, 21.5786 )
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "chips"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -2.00452, -6.68174 )

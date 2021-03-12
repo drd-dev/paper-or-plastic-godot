@@ -4,7 +4,7 @@ extends Node2D
 const coin = preload("res://Scenes/Items/coin.tscn");
 
 var spawnTime = 10;
-var spawnReady: bool = true; #for the timer function
+var spawnReady: bool = false; #for the timer function
 var random = RandomNumberGenerator.new();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,7 +38,7 @@ func _spawnItem(item):
 	#set its position
 	var itemPos = Vector2();
 	itemPos.y = position.y;
-	itemPos.x = random.randf_range(10, 240);
+	itemPos.x = random.randf_range(15, get_viewport_rect().size.x - 15);
 	spawnedItem.position = itemPos;
 	
 	#set its rotation

@@ -21,6 +21,8 @@ bus = "SFX"
 
 [node name="Music_Game" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -15.0
+pitch_scale = 0.75
 bus = "Music"
 
 [node name="Miss_Sound" type="AudioStreamPlayer" parent="."]

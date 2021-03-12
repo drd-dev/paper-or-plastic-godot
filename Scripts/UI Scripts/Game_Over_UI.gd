@@ -1,14 +1,6 @@
 extends CenterContainer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var showUI = false;
-
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,7 +9,7 @@ func _process(delta):
 
 
 func control_visibility(delta):
-	if(GameManager.game_state != GameManager.GAME_STATE.playing):
+	if(GameManager.game_state == GameManager.GAME_STATE.gameOver || GameManager.game_state == GameManager.GAME_STATE.paused):
 		rect_position.y = lerp(rect_position.y, 150, 5 * delta);
 	else:
 		rect_position.y = lerp(rect_position.y, 700, 5 * delta);

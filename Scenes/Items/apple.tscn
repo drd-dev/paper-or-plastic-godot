@@ -25,6 +25,7 @@ animations = [ {
 ]]
 physics_material_override = ExtResource( 2 )
 script = ExtResource( 3 )
+type = "apple"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -20.4156 )

@@ -29,6 +29,7 @@ height = 45.4525
 ]]
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "bread"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -2.52707, -2.82436 )

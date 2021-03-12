@@ -29,6 +29,7 @@ extents = Vector2( 11.9502, 22.1997 )
 position = Vector2( 943.983, 60.5426 )
 physics_material_override = ExtResource( 3 )
 script = ExtResource( 4 )
+type = "soda"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.90735e-06, -14.1429 )
