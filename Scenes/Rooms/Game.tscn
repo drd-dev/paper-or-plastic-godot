@@ -1,9 +1,9 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Sprites/Backgrounds/GameBackground.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/UI/TopUI/ScorePanel.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/bag scripts/bag_controller.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/UI/Timer/timer.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Item_Spawner.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/UI/TopUI/pauseButton.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/TopUI/TopUI_Misses.png" type="Texture" id=7]
@@ -12,103 +12,214 @@
 [ext_resource path="res://Sprites/UI/SlideIcon.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Coin_Spawner.gd" type="Script" id=11]
 [ext_resource path="res://Fonts/pixel-font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Fonts/pixel-font_body.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Scripts/UI Scripts/ShakeCamera2D.gd" type="Script" id=14]
 [ext_resource path="res://Sprites/UI/game_over_UI/spr_deathBoard_0.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/UI/Buttons/Bag_Buttons.png" type="Texture" id=16]
 [ext_resource path="res://Scripts/UI Scripts/game_ui_top.gd" type="Script" id=17]
 [ext_resource path="res://Fonts/gameOverFont.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Sprites/UI/TopUI/highScoreAlert.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/UI Scripts/Game_Over_UI.gd" type="Script" id=20]
 [ext_resource path="res://Scripts/UI Scripts/gameOverScore_UI.gd" type="Script" id=21]
+[ext_resource path="res://Sprites/UI/multiplier_progress.png" type="Texture" id=22]
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 10 )
 region = Rect2( 160, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 10 )
 region = Rect2( 320, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 10 )
 region = Rect2( 480, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 10 )
 region = Rect2( 640, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 10 )
 region = Rect2( 800, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 10 )
 region = Rect2( 960, 0, 160, 80 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 10 )
 region = Rect2( 1120, 0, 160, 80 )
 
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 96, 38 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 7 )
 region = Rect2( 96, 0, 96, 38 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 7 )
 region = Rect2( 192, 0, 96, 38 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 7 )
 region = Rect2( 288, 0, 96, 38 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 22 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=43]
+animations = [ {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 60, 60 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 60, 0, 60, 60 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 120, 0, 60, 60 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 19 )
+region = Rect2( 236, 0, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 19 )
+region = Rect2( 472, 0, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 19 )
+region = Rect2( 708, 0, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 32, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 19 )
+region = Rect2( 236, 32, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 19 )
+region = Rect2( 472, 32, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 19 )
+region = Rect2( 708, 32, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 64, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 19 )
+region = Rect2( 236, 64, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 19 )
+region = Rect2( 472, 64, 236, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 19 )
+region = Rect2( 708, 64, 236, 32 )
+
+[sub_resource type="SpriteFrames" id=31]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 60, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 16 )
 region = Rect2( 50, 59, 14, 21 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 100, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 16 )
 region = Rect2( 50, 99, 14, 21 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 80, 14, 20 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 16 )
 region = Rect2( 50, 80, 14, 20 )
 
 [node name="Game" type="Node2D"]
+
+[node name="screenTint" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0.921569, 0.454902, 0.454902, 1 )
 
 [node name="ShakeCamera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -125,8 +236,8 @@ script = ExtResource( 5 )
 
 [node name="tutorial" type="AnimatedSprite" parent="Item_Spawner"]
 position = Vector2( 86.8068, 260.098 )
-frames = SubResource( 20 )
-frame = 3
+frames = SubResource( 9 )
+frame = 5
 speed_scale = 2.0
 playing = true
 centered = false
@@ -137,7 +248,6 @@ script = ExtResource( 11 )
 [node name="Bag" parent="." instance=ExtResource( 2 )]
 position = Vector2( 126, 429.246 )
 motion/sync_to_physics = true
-script = ExtResource( 4 )
 
 [node name="Top_UI" type="ReferenceRect" parent="."]
 margin_right = 250.0
@@ -147,10 +257,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Top_UI"]
+position = Vector2( 33.1592, 53.6 )
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 25
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 5 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+angular_velocity = 1.0
+radial_accel = 1.0
+color = Color( 0.952941, 0.835294, 0.156863, 1 )
+
+[node name="burst" type="CPUParticles2D" parent="Top_UI"]
+position = Vector2( 33.1592, 53.6 )
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 5.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 5 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+angular_velocity = 1.0
+radial_accel = 1.0
+scale_amount = 1.5
+color = Color( 0.952941, 0.835294, 0.156863, 1 )
+
 [node name="Misses" type="AnimatedSprite" parent="Top_UI"]
 position = Vector2( 154, 0 )
 z_index = 1000
-frames = SubResource( 5 )
+frames = SubResource( 14 )
 centered = false
 
 [node name="Pause Button" type="TextureButton" parent="Top_UI"]
@@ -177,10 +318,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Top_UI/ScorePanel"]
-margin_left = 3.40347
-margin_top = -3.78436
-margin_right = 43.4034
-margin_bottom = 24.2156
+margin_left = 3.0
+margin_right = 110.0
+margin_bottom = 48.0
+rect_scale = Vector2( 0.4, 0.4 )
 custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.952941, 0.835294, 0.156863, 1 )
 text = "0"
@@ -192,9 +333,58 @@ __meta__ = {
 }
 
 [node name="coin_UI" parent="Top_UI" instance=ExtResource( 9 )]
+margin_left = 194.0
 margin_top = 38.0
+margin_right = 234.0
 margin_bottom = 78.0
 rect_scale = Vector2( 1.2, 1.2 )
+
+[node name="multiplier_fill" type="AnimatedSprite" parent="Top_UI"]
+position = Vector2( 29.5329, 61.316 )
+scale = Vector2( 1.25, 1.25 )
+frames = SubResource( 43 )
+frame = 4
+
+[node name="multiplier" type="Label" parent="Top_UI/multiplier_fill"]
+margin_left = -11.0085
+margin_top = -9.42674
+margin_right = 7.99151
+margin_bottom = 9.57326
+rect_scale = Vector2( 1.25, 1.25 )
+custom_fonts/font = ExtResource( 13 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="Label" parent="Top_UI/multiplier_fill"]
+margin_left = -9.06431
+margin_top = -9.42674
+margin_right = 9.93569
+margin_bottom = 15.5733
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 13 )
+text = "x
+"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer" type="AnimatedSprite" parent="Top_UI"]
+position = Vector2( 126, 192.333 )
+frames = SubResource( 18 )
+speed_scale = 0.0
+
+[node name="highScore" type="AnimatedSprite" parent="Top_UI"]
+position = Vector2( 126, 95.1924 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 31 )
+frame = 4
+speed_scale = 3.0
+playing = true
 
 [node name="Game_Over_UI" type="CenterContainer" parent="."]
 pause_mode = 2
@@ -212,6 +402,9 @@ __meta__ = {
 margin_right = 136.0
 margin_bottom = 132.0
 texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="scores" type="ReferenceRect" parent="Game_Over_UI"]
 margin_left = 68.0
@@ -257,8 +450,8 @@ margin_left = 17.996
 margin_top = 20.2272
 margin_right = 57.996
 margin_bottom = 60.2272
-texture_normal = SubResource( 6 )
-texture_pressed = SubResource( 7 )
+texture_normal = SubResource( 32 )
+texture_pressed = SubResource( 33 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -270,8 +463,8 @@ margin_left = -56.0981
 margin_top = 20.2272
 margin_right = -16.0981
 margin_bottom = 60.2272
-texture_normal = SubResource( 8 )
-texture_pressed = SubResource( 9 )
+texture_normal = SubResource( 34 )
+texture_pressed = SubResource( 35 )
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -283,8 +476,8 @@ margin_left = -19.3684
 margin_top = 20.2272
 margin_right = 20.6316
 margin_bottom = 60.2272
-texture_normal = SubResource( 10 )
-texture_pressed = SubResource( 11 )
+texture_normal = SubResource( 36 )
+texture_pressed = SubResource( 37 )
 expand = true
 stretch_mode = 5
 __meta__ = {

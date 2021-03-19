@@ -27,9 +27,9 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 
 [node name="credits" type="Label" parent="."]
-margin_top = 226.838
+margin_top = 192.387
 margin_right = 250.0
-margin_bottom = 259.838
+margin_bottom = 225.387
 custom_fonts/font = ExtResource( 1 )
 text = "CREDITS"
 align = 1
@@ -40,15 +40,21 @@ __meta__ = {
 }
 
 [node name="body" type="Label" parent="credits"]
-margin_top = 45.5677
+margin_top = 45.0958
 margin_right = 250.0
-margin_bottom = 112.568
+margin_bottom = 112.096
 custom_fonts/font = ExtResource( 2 )
 text = "Game By
 Dylan Dougherty
 
-With music from
-Tyler SHields"
+@zeoxo
+
+
+
+With sound design from
+Tyler Shields
+
+@shieldssounds"
 align = 1
 valign = 1
 uppercase = true

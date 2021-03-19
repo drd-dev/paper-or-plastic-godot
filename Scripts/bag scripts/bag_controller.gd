@@ -17,11 +17,22 @@ func _physics_process(delta):
 	position = lerp(position, newPos, 6 * delta);
 	
 func _process(_delta):
+	
+	if(GameManager.multiplier >= GameManager.max_multiplier):
+		$comboParticles.emitting = true;
+		$comboParticles2.emitting = true;
+	else:
+		$comboParticles.emitting = false;
+		$comboParticles2.emitting = false;	
+	
+	
 	if(game_started): return;
 	if(position.x != start_pos):
 		game_started = true;
 		GameManager.game_state = GameManager.GAME_STATE.playing;
 		get_node("../Item_Spawner").start_spawner();
+		
+
 
 func miss_animation():
 	if(get_node("SkinLoader/Front").get_animation() == "miss"): return;

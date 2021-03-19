@@ -21,25 +21,25 @@
 [ext_resource path="res://Scripts/UI Scripts/stats_ui.gd" type="Script" id=19]
 [ext_resource path="res://Fonts/pixel-font_body.tres" type="DynamicFont" id=20]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 13, 13 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 50, 75 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -57,20 +57,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 50, 75 )
-
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ SubResource( 11 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 50, 75 )
 
 [sub_resource type="SpriteFrames" id=8]
@@ -82,7 +70,7 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 50, 75 )
 
 [sub_resource type="SpriteFrames" id=10]
@@ -93,32 +81,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 16 )
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 50, 75 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 21 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 50, 75 )
-
-[sub_resource type="SpriteFrames" id=20]
-animations = [ {
-"frames": [ SubResource( 19 ) ],
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 50, 75 )
 
 [sub_resource type="SpriteFrames" id=14]
@@ -130,7 +106,7 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 50, 75 )
 
 [sub_resource type="SpriteFrames" id=16]
@@ -142,12 +118,36 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 50, 75 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
 "frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 50, 75 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 50, 75 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 21 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -267,8 +267,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/coins"]
 margin_left = 5.0
 margin_top = 42.0
-margin_right = 40.0
-margin_bottom = 53.0
+margin_right = 81.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -279,7 +280,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/coins"]
 position = Vector2( 22.6674, 22.6923 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 
 [node name="oranges" type="Control" parent="GridContainer"]
 margin_left = 61.0
@@ -295,8 +296,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/oranges"]
 margin_left = 4.0
 margin_top = 42.0
-margin_right = 42.0
-margin_bottom = 53.0
+margin_right = 79.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -306,7 +308,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/oranges"]
 position = Vector2( 22, 0 )
-frames = SubResource( 2 )
+frames = SubResource( 4 )
 
 [node name="apples" type="Control" parent="GridContainer"]
 margin_left = 122.0
@@ -322,8 +324,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/apples"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 92.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -349,8 +352,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/cheese"]
 margin_left = -2.0
 margin_top = 42.0
-margin_right = 47.0
-margin_bottom = 53.0
+margin_right = 98.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -360,7 +364,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/cheese"]
 position = Vector2( 22, 0 )
-frames = SubResource( 12 )
+frames = SubResource( 8 )
 
 [node name="bread" type="Control" parent="GridContainer"]
 margin_top = 98.0
@@ -376,8 +380,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/bread"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 96.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -387,7 +392,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/bread"]
 position = Vector2( 22, 0 )
-frames = SubResource( 8 )
+frames = SubResource( 10 )
 
 [node name="carrots" type="Control" parent="GridContainer"]
 margin_left = 61.0
@@ -404,8 +409,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/carrots"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 45.0
-margin_bottom = 53.0
+margin_right = 90.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -415,7 +421,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/carrots"]
 position = Vector2( 22, 0 )
-frames = SubResource( 10 )
+frames = SubResource( 12 )
 
 [node name="milk" type="Control" parent="GridContainer"]
 margin_left = 122.0
@@ -432,8 +438,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/milk"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 90.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -443,7 +450,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/milk"]
 position = Vector2( 22, 8.62173 )
-frames = SubResource( 22 )
+frames = SubResource( 14 )
 
 [node name="ketchup" type="Control" parent="GridContainer"]
 margin_left = 183.0
@@ -460,8 +467,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/ketchup"]
 margin_left = 2.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 88.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -471,7 +479,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/ketchup"]
 position = Vector2( 22, 0 )
-frames = SubResource( 20 )
+frames = SubResource( 16 )
 
 [node name="chips" type="Control" parent="GridContainer"]
 margin_top = 196.0
@@ -487,8 +495,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/chips"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 91.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -498,7 +507,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/chips"]
 position = Vector2( 22.4205, 10.345 )
-frames = SubResource( 14 )
+frames = SubResource( 18 )
 
 [node name="chocolate" type="Control" parent="GridContainer"]
 margin_left = 61.0
@@ -515,8 +524,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/chocolate"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 78.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -526,7 +536,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/chocolate"]
 position = Vector2( 22, 0 )
-frames = SubResource( 16 )
+frames = SubResource( 20 )
 
 [node name="donut" type="Control" parent="GridContainer"]
 margin_left = 122.0
@@ -542,8 +552,9 @@ __meta__ = {
 
 [node name="label" type="Label" parent="GridContainer/donut"]
 margin_top = 42.0
-margin_right = 45.0
-margin_bottom = 53.0
+margin_right = 88.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -553,7 +564,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GridContainer/donut"]
 position = Vector2( 22, 0 )
-frames = SubResource( 18 )
+frames = SubResource( 22 )
 
 [node name="peanutButter" type="Control" parent="GridContainer"]
 margin_left = 183.0
@@ -570,8 +581,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/peanutButter"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 90.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -596,8 +608,9 @@ __meta__ = {
 
 [node name="label" type="Label" parent="GridContainer/soup"]
 margin_top = 42.0
-margin_right = 45.0
-margin_bottom = 53.0
+margin_right = 97.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1
@@ -624,8 +637,9 @@ __meta__ = {
 [node name="label" type="Label" parent="GridContainer/soda"]
 margin_left = 1.0
 margin_top = 42.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_right = 83.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "2"
 align = 1

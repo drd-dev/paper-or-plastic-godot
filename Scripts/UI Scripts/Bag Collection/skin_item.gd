@@ -4,9 +4,9 @@ var skin: String ="brown";
 var price: int = 100;
 var unlocked: bool = false
 
-func set_skin(skin_name: String, cost: int):
+func set_skin(skin_name: String):
 	skin = skin_name;
-	price = cost;
+	price = GameManager.skin_dict[skin_name].price;
 	
 	var fileName: String = GameManager.skin_dict[skin_name].fileName
 	unlocked = GameManager.skin_unlocks[skin_name];

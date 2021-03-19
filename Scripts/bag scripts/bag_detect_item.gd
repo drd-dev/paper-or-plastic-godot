@@ -19,8 +19,15 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if(body.is_in_group("collectables")):
 		body.queue_free();
-		get_node("../AudioPlayer").play(); #play audio
 		GameManager.Item_Caught(body);
+		
+		
+		get_node("../catchParticles").emitting = true;
+		get_node("../AudioPlayer").pitch_scale = 1 + (0.05 * GameManager.multiplier);
+		get_node("../AudioPlayer").play(); #play audio
+
+		
+		get_node("../SkinLoader").scale = Vector2(1.1,1.1)
 		
 	if(body.is_in_group("coins")):
 		body.queue_free();

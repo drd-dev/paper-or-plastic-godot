@@ -14,7 +14,7 @@ func load_collection():
 		get_node("skins/container").add_child(newSkin);
 		
 		#set the skin
-		newSkin.set_skin(skin, 25);	
+		newSkin.set_skin(skin);	
 	pass
 	
 

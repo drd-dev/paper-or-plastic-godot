@@ -30,7 +30,6 @@ SaveManager="*res://Scenes/SaveManager.tscn"
 
 window/size/width=250
 window/size/height=480
-window/size/resizable=false
 window/size/test_width=500
 window/size/test_height=960
 window/dpi/allow_hidpi=true

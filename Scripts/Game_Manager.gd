@@ -9,11 +9,18 @@ var game_state = GAME_STATE.pre_game;
 
 
 #game vars
-var score = 0;
-var misses = 0;
-var highScore = 0;
-var coins = 0;
-var current_skin = "brown";
+var score: int = 0;
+var misses: int = 0;
+var highScore: int = 0;
+
+var multiplier: int = 1;
+var max_multiplier: int = 10;
+var multiplier_progress = 0;
+var multiplier_progress_max = 4;
+
+
+var coins: int = 0;
+var current_skin: String = "brown";
 var skin_unlocks = {}; #dictionary to store unlocks
 var player: Node = null;
 
@@ -63,10 +70,11 @@ func Reset_Game():
 func Item_Missed():
 	if(game_state != GAME_STATE.playing): return;
 	misses += 1;
+	multiplier = 1;
+	multiplier_progress = 0;
 	player.miss_animation();
 	#shake screen
 	get_node("/root/Game/ShakeCamera2D").add_trauma(0.5)
-	
 	
 	if(misses >= 3):
 		misses = 3;
@@ -74,40 +82,69 @@ func Item_Missed():
 		
 	AudioManager.Item_Missed();
 
+	get_node("/root/Game/screenTint").visible = true;
+	yield(get_tree().create_timer(1), "timeout");
+	get_node("/root/Game/screenTint").visible = false;
+
+
 func Item_Caught(body):
 	if(game_state != GAME_STATE.playing): return;
 	
-	score += 1;
+	
+	if(multiplier_progress < multiplier_progress_max):
+		multiplier_progress += 1;
+	
+	if(multiplier < max_multiplier && multiplier_progress >= multiplier_progress_max): 
+		multiplier += 1;
+		multiplier_progress = 0;
+		
+		
+	score += 1 * multiplier;
+	
+	
 	if(score > highScore):
 		highScore = score;
 		
 	#collection stats
 	print(body.type);
 	if(body.type == "orange"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		orange_col += 1;
 	elif(body.type == "apple"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		apple_col += 1;
 	elif(body.type == "bread"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		bread_col += 1;
 	elif(body.type == "carrot"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		carrot_col += 1;
 	elif(body.type == "cheese"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		cheese_col += 1;
 	elif(body.type == "chocolate"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		chocolate_col += 1;
 	elif(body.type == "chips"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		chips_col += 1;
 	elif(body.type == "donut"):
 		donut_col += 1;
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.2)
 	elif(body.type == "ketchup"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.2)
 		ketchup_col += 1;
 	elif(body.type == "milk"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.3)
 		milk_col += 1;
 	elif(body.type == "peanutButter"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.3)
 		peanutButter_col += 1;
 	elif(body.type == "soda"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.1)
 		soda_col += 1;
 	elif(body.type == "soup"):
+		get_node("/root/Game/ShakeCamera2D").add_trauma(0.2)
 		soup_col += 1;
 	else:
 		print("unidentified item caught " + body.type);
@@ -161,130 +198,172 @@ func setup_unlocks():
 var skin_dict = {
 	"brown": { 
 		"name": "BARRY",
-		"fileName": "bag_brown.tres" },
+		"fileName": "bag_brown.tres",
+		"price": 25 },
 	"blue:": { 
 		"name": "BILLY",
-		"fileName": "bag_blue.tres" },
+		"fileName": "bag_blue.tres",
+		"price": 25 },
 	"green": { 
 		"name": "GARY",
-		"fileName": "bag_green.tres" },
+		"fileName": "bag_green.tres",
+		"price": 25 },
 	"pink": { 
 		"name": "PENNY",
-		"fileName": "bag_pink.tres" },
+		"fileName": "bag_pink.tres",
+		"price": 25 },
 	"purple":{
 		"name": "PERRI",
-		"fileName": "bag_purple.tres" },
+		"fileName": "bag_purple.tres",
+		"price": 25 },
 	"red": { 
 		"name": "JERRY",
-		"fileName": "bag_red.tres" },
+		"fileName": "bag_red.tres",
+		"price": 25 },
 	"knight": { 
 		"name": "SIR WILLIAM",
-		"fileName": "bag_knight.tres" },
+		"fileName": "bag_knight.tres",
+		"price": 50 },
 	"viking": { 
 		"name": "JORIS",
-		"fileName": "bag_viking.tres" },
+		"fileName": "bag_viking.tres",
+		"price": 50 },
 	"roman": { 
 		"name": "ALEX",
-		"fileName": "bag_roman.tres" },
+		"fileName": "bag_roman.tres",
+		"price": 50 },
 	"scuba": { 
 		"name": "SNORKEL",
-		"fileName": "bag_scuba.tres" },
+		"fileName": "bag_scuba.tres",
+		"price": 35 },
 	"cat": { 
 		"name": "STOMPY",
-		"fileName": "bag_cat.tres" },
+		"fileName": "bag_cat.tres",
+		"price": 35 },
 	"dog": { 
 		"name": "PUDGY",
-		"fileName": "bag_dog.tres" },
+		"fileName": "bag_dog.tres",
+		"price": 35 },
 	"suit": { 
 		"name": "PETER",
-		"fileName": "bag_suit.tres" },
+		"fileName": "bag_suit.tres",
+		"price": 35 },
 	"doctor": { 
 		"name": "DR. HUGH",
-		"fileName": "bag_doctor.tres" },
+		"fileName": "bag_doctor.tres",
+		"price": 35 },
 	"pilot": { 
 		"name": "CAPTAIN FRANK",
-		"fileName": "bag_pilot.tres" },
+		"fileName": "bag_pilot.tres",
+		"price": 35 },
 	"army":{ 
 		"name": "DAN",
-		"fileName": "bag_army.tres" },
+		"fileName": "bag_army.tres",
+		"price": 35 },
 	"construct": { 
 		"name": "BOB",
-		"fileName": "bag_construct.tres" },
+		"fileName": "bag_construct.tres",
+		"price": 35 },
 	"zombie": { 
 		"name": "BITER",
-		"fileName": "bag_zombie.tres" },
+		"fileName": "bag_zombie.tres",
+		"price": 35 },
 	"skull": { 
 		"name": "DOOT",
-		"fileName": "bag_skull.tres" },
+		"fileName": "bag_skull.tres",
+		"price": 50 },
 	"devil": { 
 		"name": "STAN",
-		"fileName": "bag_devil.tres" },
+		"fileName": "bag_devil.tres",
+		"price": 50 },
 	"angel": { 
 		"name": "ANGELICA",
-		"fileName": "bag_angel.tres" },
+		"fileName": "bag_angel.tres",
+		"price": 50 },
 	"boy": { 
 		"name": "BAG BOY",
-		"fileName": "bag_boy.tres" },
+		"fileName": "bag_boy.tres",
+		"price": 50 },
 	"alien": { 
 		"name": "ALLEN",
-		"fileName": "bag_alien.tres" },
+		"fileName": "bag_alien.tres",
+		"price": 35 },
 	"farmer": { 
 		"name": "JOHN BROWN",
-		"fileName": "bag_farmer.tres" },
+		"fileName": "bag_farmer.tres",
+		"price": 35 },
 	"cow": { 
 		"name": "DAISY",
-		"fileName": "bag_cow.tres" },
+		"fileName": "bag_cow.tres",
+		"price": 35 },
 	"fish": { 
 		"name": "SMALLFINS",
-		"fileName": "bag_fish.tres" },
+		"fileName": "bag_fish.tres",
+		"price": 35 },
 	"shark": { 
 		"name": "GNAWS",
-		"fileName": "bag_shark.tres" },
+		"fileName": "bag_shark.tres",
+		"price": 50 },
 	"robot": { 
 		"name": "00110110x3",
-		"fileName": "bag_robot.tres" },
+		"fileName": "bag_robot.tres",
+		"price": 50 },
 	"gorilla": { 
 		"name": "HARAMBO",
-		"fileName": "bag_gorilla.tres" },
+		"fileName": "bag_gorilla.tres",
+		"price": 35 },
 	"football": { 
 		"name": "CHRIS",
-		"fileName": "bag_football.tres" },
+		"fileName": "bag_football.tres",
+		"price": 35 },
 	"princess": { 
 		"name": "CINDERBELLA",
-		"fileName": "bag_princess.tres" },
+		"fileName": "bag_princess.tres",
+		"price": 35 },
 	"king": { 
 		"name": "KING GEORGE",
-		"fileName": "bag_king.tres" },
+		"fileName": "bag_king.tres",
+		"price": 35 },
 	"scientist": { 
 		"name": "ALBERT",
-		"fileName": "bag_scientist.tres" },
+		"fileName": "bag_scientist.tres",
+		"price": 50 },
 	"blaike": { 
 		"name": "HAT GUY",
-		"fileName": "bag_blaike.tres" },
+		"fileName": "bag_blaike.tres",
+		"price": 35 },
 	"astronaut": { 
 		"name": "BUZZ",
-		"fileName": "bag_astronaut.tres" },
+		"fileName": "bag_astronaut.tres",
+		"price": 50 },
 	"nathan": { 
 		"name": "NATHAN",
-		"fileName": "bag_nathan.tres" },
+		"fileName": "bag_nathan.tres",
+		"price": 35 },
 	"penguin": { 
 		"name": "WADDLES",
-		"fileName": "bag_penguin.tres" },
+		"fileName": "bag_penguin.tres",
+		"price": 35 },
 	"ginger": { 
 		"name": "GINGY",
-		"fileName": "bag_ginger.tres" },
+		"fileName": "bag_ginger.tres",
+		"price": 50 },
 	"elf": { 
 		"name": "JANGLES",
-		"fileName": "bag_elf.tres" },
+		"fileName": "bag_elf.tres",
+		"price": 50 },
 	"snowman": { 
 		"name": "FROSTY",
-		"fileName": "bag_snowman.tres" },
+		"fileName": "bag_snowman.tres",
+		"price": 50 },
 	"deer": { 
 		"name": "RUDOLPH",
-		"fileName": "bag_deer.tres" },
+		"fileName": "bag_deer.tres",
+		"price": 35 },
 	"santa": { 
 		"name": "NICK",
-		"fileName": "bag_santa.tres"},
+		"fileName": "bag_santa.tres",
+		"price": 50 }
 }
 
 
