@@ -6,7 +6,6 @@ var sfx_muted: bool = false;
 func _ready():
 	#set sound mutes when game loads
 	Update_Sound_Settings();
-	Play_Music();
 	
 	
 func Button_Press():
@@ -17,6 +16,38 @@ func Button_Back():
 
 func Item_Missed():
 	$Miss_Sound.play();
+
+func high_score():
+	$high_score.play();
+	
+func game_start():
+	$game_start.play();
+	
+func max_multiplier():
+	$max_multiplier.play();
+	
+func back_button_long():
+	$Button_Back_Long.play();
+
+
+func menu_transition():
+	$menu_transition.play();
+	
+func multiplier_up():
+	$multiplier_up.play();
+
+func set_menu_sounds(state: bool):
+	if state:
+		$mainMenuSounds.play();
+	else:
+		$mainMenuSounds.stop();
+		
+		
+func set_game_music(state: bool):
+	if state:
+		$Music_Game.play();
+	else:
+		$Music_Game.stop();
 
 
 func Toggle_Music():
@@ -33,10 +64,6 @@ func Toggle_SFX():
 
 func Coin_Collected():
 	$Coin_Collected.play();
-
-
-func Play_Music():
-	$Music_Game.play();
 
 
 func Update_Sound_Settings():

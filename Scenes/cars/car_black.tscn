@@ -28,6 +28,7 @@ speed = 60
 
 [node name="car_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
 speed_scale = 0.5
 playing = true
 

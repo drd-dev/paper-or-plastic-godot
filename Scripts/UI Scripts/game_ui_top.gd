@@ -25,16 +25,18 @@ func _process(delta):
 	
 	get_node("multiplier_fill/multiplier").text = String(GameManager.multiplier);
 	
-	if(GameManager.multiplier_progress < GameManager.max_multiplier):
+	if(GameManager.multiplier < GameManager.max_multiplier):
 		get_node("multiplier_fill").frame = GameManager.multiplier_progress;
 	else:
 		get_node("multiplier_fill").frame = 4;
+		
 
 
 	if(GameManager.score > highScore) && highScore != 0:
 		if(!high_score_beat):
 			high_score_beat = true;
 			var hs = get_node("highScore");
+			AudioManager.high_score();
 			hs.visible = true;
 			yield(get_tree().create_timer(2), "timeout");
 			hs.visible = false;
@@ -46,6 +48,7 @@ func _process(delta):
 		if(!max_reached):
 			$burst.emitting = true;
 			max_reached = true;
+			AudioManager.max_multiplier();
 	else:
 		$CPUParticles2D.emitting = false;
 		max_reached = false;

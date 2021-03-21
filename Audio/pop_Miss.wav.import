@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pop_Miss.wav-3f43ed52dd139fe1d7e8f4d785eeeef0.sample"
+
+[deps]
+
+source_file="res://Audio/pop_Miss.wav"
+dest_files=[ "res://.import/pop_Miss.wav-3f43ed52dd139fe1d7e8f4d785eeeef0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pop_skinPurchased_shorter.wav-a6ca1b8f8d2022811ea4a64fb1a86aa4.sample"
+
+[deps]
+
+source_file="res://Audio/pop_skinPurchased_shorter.wav"
+dest_files=[ "res://.import/pop_skinPurchased_shorter.wav-a6ca1b8f8d2022811ea4a64fb1a86aa4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -20,8 +20,8 @@ func Update_Spawn_Time():
 	spawnTime = random.randf_range(8, 12);
 	if(GameManager.score > 25): spawnTime = random.randf_range(6, 10);
 	if(GameManager.score > 50): spawnTime = random.randf_range(5, 8);
-	if(GameManager.score > 75): spawnTime = random.randf_range(3, 4);
-	if(GameManager.score > 100): spawnTime = random.randf_range(2, 3);
+	if(GameManager.score > 150): spawnTime = random.randf_range(3, 4);
+	if(GameManager.score > 400): spawnTime = random.randf_range(2, 3);
 
 
 #spawns an item at a random location in the game

@@ -1,7 +1,7 @@
 extends Node
 
 #debug
-var show_logs = true;
+var show_logs = false;
 
 enum GAME_STATE {pre_game, playing, gameOver, paused};
 
@@ -96,6 +96,7 @@ func Item_Caught(body):
 	
 	if(multiplier < max_multiplier && multiplier_progress >= multiplier_progress_max): 
 		multiplier += 1;
+		AudioManager.multiplier_up();
 		multiplier_progress = 0;
 		
 		
@@ -175,6 +176,7 @@ func Resume_Game():
 func Change_Room(roomName):
 	if(loading): return;
 	var time = 1.5;
+	AudioManager.menu_transition();
 	get_node("Load_screen").ShowLoadScreen(time);
 	loading = true;
 	yield(get_tree().create_timer(time), "timeout");

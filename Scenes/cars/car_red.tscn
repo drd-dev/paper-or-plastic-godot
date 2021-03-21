@@ -4,6 +4,8 @@
 [ext_resource path="res://Scripts/UI Scripts/Main Menu/car_controller.gd" type="Script" id=2]
 [ext_resource path="res://Audio/car-driveby.wav" type="AudioStream" id=3]
 
+
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 150, 70 )

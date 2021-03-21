@@ -41,10 +41,10 @@ func _process(_delta):
 	
 	if(GameManager.score > 10): index = random.randf_range(0,2)
 	if(GameManager.score > 20): index = random.randf_range(0,3)
-	if(GameManager.score > 30): index = random.randf_range(0,5)
-	if(GameManager.score > 35): index = random.randf_range(0,6)
-	if(GameManager.score > 45): index = random.randf_range(0,10)
-	if(GameManager.score > 45): index = random.randf_range(0,13)
+	if(GameManager.score > 50): index = random.randf_range(0,5)
+	if(GameManager.score > 150): index = random.randf_range(0,6)
+	if(GameManager.score > 400): index = random.randf_range(0,10)
+	if(GameManager.score > 600): index = random.randf_range(0,13)
 
 	_spawnItem(itemList[index]);
 
@@ -56,8 +56,8 @@ func Update_Spawn_Time():
 	spawnTime = random.randf_range(0.75, 1.25);
 	if(GameManager.score > 25): spawnTime = random.randf_range(0.60, 1);
 	if(GameManager.score > 50): spawnTime = random.randf_range(0.50, 0.75);
-	if(GameManager.score > 75): spawnTime = random.randf_range(0.45, 0.5);
-	if(GameManager.score > 100): spawnTime = random.randf_range(.40, 0.45);
+	if(GameManager.score > 150): spawnTime = random.randf_range(0.45, 0.5);
+	if(GameManager.score > 400): spawnTime = random.randf_range(.40, 0.45);
 
 
 #spawns an item at a random location in the game

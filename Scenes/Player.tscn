@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/bags/BagBrown_Back.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/bag scripts/bag_detect_item.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/bag scripts/bag_sprite_controller.gd" type="Script" id=4]
-[ext_resource path="res://Audio/Bag_catch.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/pop_Catch_fix.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sprites/bags/bagBrown/BagBrown_Miss.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Skin Scripts/skin_loader.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/bag scripts/bag_controller.gd" type="Script" id=8]
@@ -117,7 +117,7 @@ speed_scale = 0.0
 z_index = 100
 frames = SubResource( 13 )
 animation = "idle"
-frame = 7
+frame = 5
 speed_scale = 2.0
 playing = true
 script = ExtResource( 4 )

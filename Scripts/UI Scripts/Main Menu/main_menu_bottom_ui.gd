@@ -17,7 +17,9 @@ func _ready():
 
 
 func _on_Play_Button_pressed():
-	AudioManager.Button_Press();
+	AudioManager.game_start();
+	AudioManager.set_menu_sounds(false);
+	AudioManager.set_game_music(true);
 	GameManager.Change_Room("Game")
 	pass # Replace with function body.
 

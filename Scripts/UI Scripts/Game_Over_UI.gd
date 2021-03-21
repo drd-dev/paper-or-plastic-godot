@@ -28,8 +28,11 @@ func _on_retry_button_pressed():
 
 func _on_quit_button_pressed():
 	SaveManager.Save_Game();
-	AudioManager.Button_Back();
+	AudioManager.back_button_long();
 	GameManager.Change_Room("MainMenu")
+	AudioManager.set_menu_sounds(true);
+	AudioManager.set_game_music(false);
+	
 	get_tree().paused = false;
 	pass # Replace with function body
 
