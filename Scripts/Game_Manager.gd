@@ -2,6 +2,7 @@ extends Node
 
 #debug
 var show_logs = false;
+var version = "1.0.1"
 
 enum GAME_STATE {pre_game, playing, gameOver, paused};
 
@@ -176,7 +177,6 @@ func Resume_Game():
 func Change_Room(roomName):
 	if(loading): return;
 	var time = 1.5;
-	AudioManager.menu_transition();
 	get_node("Load_screen").ShowLoadScreen(time);
 	loading = true;
 	yield(get_tree().create_timer(time), "timeout");

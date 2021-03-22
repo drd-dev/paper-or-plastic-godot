@@ -30,8 +30,6 @@ func back_button_long():
 	$Button_Back_Long.play();
 
 
-func menu_transition():
-	$menu_transition.play();
 	
 func multiplier_up():
 	$multiplier_up.play();

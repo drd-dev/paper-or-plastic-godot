@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Audio/pop_Coin_01.wav" type="AudioStream" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Audio/pop_PlayButton.wav" type="AudioStream" id=7]
 [ext_resource path="res://Audio/pop_maxMultiplier.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/pop_ButtonPress_Back2.wav" type="AudioStream" id=9]
-[ext_resource path="res://Audio/pop_menuTransition.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/pop_multi_up.wav" type="AudioStream" id=11]
 
 [sub_resource type="AudioStreamSample" id=1]
@@ -68,10 +67,6 @@ bus = "SFX"
 stream = ExtResource( 5 )
 volume_db = -18.041
 autoplay = true
-bus = "SFX"
-
-[node name="menu_transition" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
 bus = "SFX"
 
 [node name="multiplier_up" type="AudioStreamPlayer" parent="."]

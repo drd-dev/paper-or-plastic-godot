@@ -237,7 +237,7 @@ script = ExtResource( 5 )
 [node name="tutorial" type="AnimatedSprite" parent="Item_Spawner"]
 position = Vector2( 86.8068, 260.098 )
 frames = SubResource( 9 )
-frame = 2
+frame = 3
 speed_scale = 2.0
 playing = true
 centered = false
@@ -382,6 +382,7 @@ speed_scale = 0.0
 position = Vector2( 126, 95.1924 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 37 )
+frame = 1
 speed_scale = 3.0
 playing = true
 

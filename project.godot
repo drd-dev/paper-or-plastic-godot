@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Paper Or plastic: Double Bagged"
+config/name="Paper Or plastic"
 config/description="Remake of the original Paper or Plastic"
 run/main_scene="res://Scenes/Rooms/MainMenu.tscn"
 config/icon="res://Sprites/icon.png"
